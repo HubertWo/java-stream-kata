@@ -15,23 +15,26 @@ import static org.hamcrest.Matchers.*;
 
 /**
  * By doing this tasks you will learn how to use:
- *
+ * <p>
  * - {@link Stream#sorted()}
  * - {@link Stream#limit(long)}
  * - {@link Stream#mapToInt(ToIntFunction)}
+ * - {@link Stream#flatMap(Function)}
  * - {@link Collectors#groupingBy(Function)}
+ * - {@link Collectors#counting()}
  * - {@link Comparator#comparing(Function)}
+ * - {@link Function#identity()}
  */
 @SuppressWarnings("SimplifyStreamApiCallChains")
 class BasicsTest {
 
-    static final Set<Fruit> FRUITS = Set.of(
-            new Fruit("Papaya", 109),
-            new Fruit("Banana", 105),
-            new Fruit("Kiwi", 46),
-            new Fruit("Mango", 107),
-            new Fruit("Peach", 48)
-    );
+    private static final Fruit BANANA = new Fruit("Banana", 105);
+    private static final Fruit PAPAYA = new Fruit("Papaya", 109);
+    private static final Fruit KIWI = new Fruit("Kiwi", 46);
+    private static final Fruit MANGO = new Fruit("Mango", 107);
+    private static final Fruit PEACH = new Fruit("Peach", 48);
+
+    private static final Set<Fruit> FRUITS = Set.of(PAPAYA, BANANA, KIWI, MANGO, PEACH);
 
     @Test
     @DisplayName("Task: Find 2 fruits with biggest amount of calories")
@@ -40,14 +43,13 @@ class BasicsTest {
       .sorted(Comparator.comparing(Fruit::getCalories).reversed())
       .limit(2)
      */
-    //</editor-fold>
+        //</editor-fold>
     void task1() {
-        List<Fruit> mostCaloricFruits = FRUITS.stream()
-                .collect(Collectors.toList());
+        List<Fruit> mostCaloricFruits = FRUITS.stream().collect(Collectors.toList()); // TODO:  FRUITS.stream()
 
         assertThat(mostCaloricFruits.size(), is(2));
-        assertThat(mostCaloricFruits.get(0).getName(), is("Papaya"));
-        assertThat(mostCaloricFruits.get(1).getName(), is("Mango"));
+        assertThat(mostCaloricFruits.get(0).getName(), is(PAPAYA));
+        assertThat(mostCaloricFruits.get(1).getName(), is(MANGO));
     }
 
     @Test
@@ -56,10 +58,9 @@ class BasicsTest {
     /*
       FRUITS.stream().mapToInt((Fruit fruit) -> fruit.getCalories() / 2).sum();
      */
-    //</editor-fold>
+        //</editor-fold>
     void task2() {
-        final int sumOfCalories = 0;  // FRUITS.stream()
-        // Put your answer here
+        final int sumOfCalories = 0; // TODO: FRUITS.stream()
 
         assertThat(sumOfCalories, is(206));
     }
@@ -73,16 +74,55 @@ class BasicsTest {
         Collectors.toSet()
     ));
      */
-    //</editor-fold>
+        //</editor-fold>
     void task3() {
-        final Map<Character, Set<Fruit>> mapOfFruits = Collections.emptyMap(); // FRUITS.stream()
-                // Put your answer here
+        final Map<Character, Set<Fruit>> mapOfFruits = Collections.emptyMap(); // TODO: FRUITS.stream()
 
-        assertThat(mapOfFruits.keySet(), containsInAnyOrder('B','K','M','P'));
+        assertThat(mapOfFruits.keySet(), containsInAnyOrder('B', 'K', 'M', 'P'));
         assertThat(mapOfFruits.get('B'), hasSize(1));
         assertThat(mapOfFruits.get('K'), hasSize(1));
         assertThat(mapOfFruits.get('M'), hasSize(1));
         assertThat(mapOfFruits.get('P'), hasSize(2));
+    }
+
+    @Test
+    @DisplayName("Task: Put all fruits into one basket")
+    // <editor-fold defaultstate="collapsed" desc="Click here to see the answer">
+    /*
+         fruitBaskets.stream()
+            .flatMap(Collection::stream).collect(Collectors.toList());
+     */
+        //</editor-fold>
+    void task4() {
+        final List<List<Fruit>> fruitBaskets = List.of(
+                List.of(BANANA, PAPAYA),
+                List.of(MANGO, PEACH)
+        );
+
+        final List<Fruit> basketWithAllFruits = Collections.emptyList(); // TODO: fruitBaskets.stream()
+
+        assertThat(basketWithAllFruits, containsInAnyOrder(BANANA, PAPAYA, MANGO, PEACH));
+        assertThat(basketWithAllFruits, not(contains(KIWI)));
+    }
+
+    @Test
+    @DisplayName("Task: Count amount of each fruit in the basket")
+    // <editor-fold defaultstate="collapsed" desc="Click here to see the answer">
+    /*
+        basket.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+    */
+    //</editor-fold>
+    void task5() {
+        final List<Fruit> basket = List.of(MANGO, PAPAYA, MANGO, PEACH, KIWI, KIWI, KIWI);
+
+        final Map<Fruit, Long> countedFruit = Collections.emptyMap(); //  TODO: basket.stream()
+
+        assertThat(countedFruit.size(), is(4));
+        assertThat(countedFruit.keySet(), containsInAnyOrder(MANGO, PAPAYA, PEACH, KIWI));
+        assertThat(countedFruit.get(MANGO), is(2l));
+        assertThat(countedFruit.get(PAPAYA), is(1l));
+        assertThat(countedFruit.get(PEACH), is(1l));
+        assertThat(countedFruit.get(KIWI), is(3l));
     }
 
 }

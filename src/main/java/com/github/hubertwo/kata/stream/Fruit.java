@@ -22,6 +22,14 @@ public final class Fruit {
         return calories;
     }
 
+    /**
+     * Returning only name of fruit for readability.
+     */
+    @Override
+    public String toString() {
+        return getName();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
