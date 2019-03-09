@@ -19,8 +19,11 @@ import static org.hamcrest.Matchers.*;
  * - {@link Stream#sorted()}
  * - {@link Stream#limit(long)}
  * - {@link Stream#mapToInt(ToIntFunction)}
+ * - {@link Stream#flatMap(Function)}
  * - {@link Collectors#groupingBy(Function)}
+ * - {@link Collectors#counting()}
  * - {@link Comparator#comparing(Function)}
+ * - {@link Function#identity()}
  */
 @SuppressWarnings("SimplifyStreamApiCallChains")
 class BasicsTest {
