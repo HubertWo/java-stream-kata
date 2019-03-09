@@ -87,12 +87,12 @@ class BasicsTest {
 
     @Test
     @DisplayName("Task: Put all fruits into one basket")
-        // <editor-fold defaultstate="collapsed" desc="Click here to see the answer">
-        /*
-             fruitBaskets.stream()
-                .flatMap(Collection::stream).collect(Collectors.toList());
-         */
-        //</editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="Click here to see the answer">
+    /*
+         fruitBaskets.stream()
+            .flatMap(Collection::stream).collect(Collectors.toList());
+     */
+    //</editor-fold>
     void task4() {
         final List<List<Fruit>> fruitBaskets = List.of(
                 List.of(FRUITS.get(0), FRUITS.get(1)),
