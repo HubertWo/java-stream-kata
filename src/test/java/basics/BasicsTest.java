@@ -25,13 +25,13 @@ import static org.hamcrest.Matchers.*;
 @SuppressWarnings("SimplifyStreamApiCallChains")
 class BasicsTest {
 
-    static final Fruit BANANA = new Fruit("Banana", 105);
-    static final Fruit PAPAYA = new Fruit("Papaya", 109);
-    static final Fruit KIWI = new Fruit("Kiwi", 46);
-    static final Fruit MANGO = new Fruit("Mango", 107);
-    static final Fruit PEACH = new Fruit("Peach", 48);
+    private static final Fruit BANANA = new Fruit("Banana", 105);
+    private static final Fruit PAPAYA = new Fruit("Papaya", 109);
+    private static final Fruit KIWI = new Fruit("Kiwi", 46);
+    private static final Fruit MANGO = new Fruit("Mango", 107);
+    private static final Fruit PEACH = new Fruit("Peach", 48);
 
-    static final Set<Fruit> FRUITS = Set.of(PAPAYA, BANANA, KIWI, MANGO, PEACH);
+    private static final Set<Fruit> FRUITS = Set.of(PAPAYA, BANANA, KIWI, MANGO, PEACH);
 
     @Test
     @DisplayName("Task: Find 2 fruits with biggest amount of calories")
@@ -42,8 +42,7 @@ class BasicsTest {
      */
         //</editor-fold>
     void task1() {
-        List<Fruit> mostCaloricFruits = FRUITS.stream()
-                .collect(Collectors.toList());
+        List<Fruit> mostCaloricFruits = FRUITS.stream().collect(Collectors.toList()); // TODO:  FRUITS.stream()
 
         assertThat(mostCaloricFruits.size(), is(2));
         assertThat(mostCaloricFruits.get(0).getName(), is(PAPAYA));
@@ -58,8 +57,7 @@ class BasicsTest {
      */
         //</editor-fold>
     void task2() {
-        final int sumOfCalories = 0;  // FRUITS.stream()
-        // Put your answer here
+        final int sumOfCalories = 0; // TODO: FRUITS.stream()
 
         assertThat(sumOfCalories, is(206));
     }
@@ -75,8 +73,7 @@ class BasicsTest {
      */
         //</editor-fold>
     void task3() {
-        final Map<Character, Set<Fruit>> mapOfFruits = Collections.emptyMap(); // FRUITS.stream()
-        // Put your answer here
+        final Map<Character, Set<Fruit>> mapOfFruits = Collections.emptyMap(); // TODO: FRUITS.stream()
 
         assertThat(mapOfFruits.keySet(), containsInAnyOrder('B', 'K', 'M', 'P'));
         assertThat(mapOfFruits.get('B'), hasSize(1));
@@ -99,7 +96,7 @@ class BasicsTest {
                 List.of(MANGO, PEACH)
         );
 
-        final List<Fruit> basketWithAllFruits = Collections.emptyList(); // fruitBaskets.stream()
+        final List<Fruit> basketWithAllFruits = Collections.emptyList(); // TODO: fruitBaskets.stream()
 
         assertThat(basketWithAllFruits, containsInAnyOrder(BANANA, PAPAYA, MANGO, PEACH));
         assertThat(basketWithAllFruits, not(contains(KIWI)));
@@ -115,7 +112,7 @@ class BasicsTest {
     void task5() {
         final List<Fruit> basket = List.of(MANGO, PAPAYA, MANGO, PEACH, KIWI, KIWI, KIWI);
 
-        final Map<Fruit, Long> countedFruit = Collections.emptyMap(); //  basket.stream()
+        final Map<Fruit, Long> countedFruit = Collections.emptyMap(); //  TODO: basket.stream()
 
         assertThat(countedFruit.size(), is(4));
         assertThat(countedFruit.keySet(), containsInAnyOrder(MANGO, PAPAYA, PEACH, KIWI));
