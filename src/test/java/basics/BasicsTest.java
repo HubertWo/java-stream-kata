@@ -5,7 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
 import java.util.function.ToIntFunction;
 import java.util.stream.Collectors;
@@ -26,13 +25,13 @@ import static org.hamcrest.Matchers.*;
 @SuppressWarnings("SimplifyStreamApiCallChains")
 class BasicsTest {
 
-    static final List<Fruit> FRUITS = List.of(
-            new Fruit("Papaya", 109),
-            new Fruit("Banana", 105),
-            new Fruit("Kiwi", 46),
-            new Fruit("Mango", 107),
-            new Fruit("Peach", 48)
-    );
+    static final Fruit BANANA = new Fruit("Banana", 105);
+    static final Fruit PAPAYA = new Fruit("Papaya", 109);
+    static final Fruit KIWI = new Fruit("Kiwi", 46);
+    static final Fruit MANGO = new Fruit("Mango", 107);
+    static final Fruit PEACH = new Fruit("Peach", 48);
+
+    static final Set<Fruit> FRUITS = Set.of(PAPAYA, BANANA, KIWI, MANGO, PEACH);
 
     @Test
     @DisplayName("Task: Find 2 fruits with biggest amount of calories")
@@ -41,14 +40,14 @@ class BasicsTest {
       .sorted(Comparator.comparing(Fruit::getCalories).reversed())
       .limit(2)
      */
-    //</editor-fold>
+        //</editor-fold>
     void task1() {
         List<Fruit> mostCaloricFruits = FRUITS.stream()
                 .collect(Collectors.toList());
 
         assertThat(mostCaloricFruits.size(), is(2));
-        assertThat(mostCaloricFruits.get(0).getName(), is("Papaya"));
-        assertThat(mostCaloricFruits.get(1).getName(), is("Mango"));
+        assertThat(mostCaloricFruits.get(0).getName(), is(PAPAYA));
+        assertThat(mostCaloricFruits.get(1).getName(), is(MANGO));
     }
 
     @Test
@@ -57,7 +56,7 @@ class BasicsTest {
     /*
       FRUITS.stream().mapToInt((Fruit fruit) -> fruit.getCalories() / 2).sum();
      */
-    //</editor-fold>
+        //</editor-fold>
     void task2() {
         final int sumOfCalories = 0;  // FRUITS.stream()
         // Put your answer here
@@ -74,10 +73,10 @@ class BasicsTest {
         Collectors.toSet()
     ));
      */
-    //</editor-fold>
+        //</editor-fold>
     void task3() {
         final Map<Character, Set<Fruit>> mapOfFruits = Collections.emptyMap(); // FRUITS.stream()
-                // Put your answer here
+        // Put your answer here
 
         assertThat(mapOfFruits.keySet(), containsInAnyOrder('B', 'K', 'M', 'P'));
         assertThat(mapOfFruits.get('B'), hasSize(1));
@@ -93,44 +92,37 @@ class BasicsTest {
          fruitBaskets.stream()
             .flatMap(Collection::stream).collect(Collectors.toList());
      */
-    //</editor-fold>
+        //</editor-fold>
     void task4() {
         final List<List<Fruit>> fruitBaskets = List.of(
-                List.of(FRUITS.get(0), FRUITS.get(1)),
-                List.of(FRUITS.get(3), FRUITS.get(4))
+                List.of(BANANA, PAPAYA),
+                List.of(MANGO, PEACH)
         );
 
         final List<Fruit> basketWithAllFruits = Collections.emptyList(); // fruitBaskets.stream()
 
-        assertThat(basketWithAllFruits, containsInAnyOrder(FRUITS.get(0), FRUITS.get(1), FRUITS.get(3), FRUITS.get(4)));
-        assertThat(basketWithAllFruits, not(contains(FRUITS.get(2))));
+        assertThat(basketWithAllFruits, containsInAnyOrder(BANANA, PAPAYA, MANGO, PEACH));
+        assertThat(basketWithAllFruits, not(contains(KIWI)));
     }
 
     @Test
-    @DisplayName("Task: Create a dish from maximum number of different fruits without exceeding calories limit")
+    @DisplayName("Task: Count amount of each fruit in the basket")
     // <editor-fold defaultstate="collapsed" desc="Click here to see the answer">
     /*
-        TODO:
+        basket.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
     */
     //</editor-fold>
     void task5() {
-        final int caloriesLimit = 200;
+        final List<Fruit> basket = List.of(MANGO, PAPAYA, MANGO, PEACH, KIWI, KIWI, KIWI);
 
-        // TODO: make thread-safe
-        // TODO: how to reduce until some condition is fulfilled
-        final AtomicInteger caloriesSum = new AtomicInteger();
+        final Map<Fruit, Long> countedFruit = Collections.emptyMap(); //  basket.stream()
 
-        final List<Fruit> dish = FRUITS.stream()
-                .sorted(Comparator.comparing(fruit -> fruit.getCalories()))
-                .takeWhile(fruit -> {
-                    // TODO: FIX: check then act
-                    boolean isEnoughSpace = fruit.getCalories() + caloriesSum.get() < caloriesLimit;
-                    caloriesSum.addAndGet(fruit.getCalories());
-                    return isEnoughSpace;
-                }).collect(Collectors.toList());
-
-
-        assertThat(dish, contains(FRUITS.get(2), FRUITS.get(4), FRUITS.get(1)));
+        assertThat(countedFruit.size(), is(4));
+        assertThat(countedFruit.keySet(), containsInAnyOrder(MANGO, PAPAYA, PEACH, KIWI));
+        assertThat(countedFruit.get(MANGO), is(2l));
+        assertThat(countedFruit.get(PAPAYA), is(1l));
+        assertThat(countedFruit.get(PEACH), is(1l));
+        assertThat(countedFruit.get(KIWI), is(3l));
     }
-    
+
 }
