@@ -15,7 +15,7 @@ import static org.hamcrest.Matchers.*;
 
 /**
  * By doing this tasks you will learn how to use:
- *
+ * <p>
  * - {@link Stream#sorted()}
  * - {@link Stream#limit(long)}
  * - {@link Stream#mapToInt(ToIntFunction)}
@@ -25,7 +25,7 @@ import static org.hamcrest.Matchers.*;
 @SuppressWarnings("SimplifyStreamApiCallChains")
 class BasicsTest {
 
-    static final Set<Fruit> FRUITS = Set.of(
+    static final List<Fruit> FRUITS = List.of(
             new Fruit("Papaya", 109),
             new Fruit("Banana", 105),
             new Fruit("Kiwi", 46),
@@ -78,11 +78,30 @@ class BasicsTest {
         final Map<Character, Set<Fruit>> mapOfFruits = Collections.emptyMap(); // FRUITS.stream()
                 // Put your answer here
 
-        assertThat(mapOfFruits.keySet(), containsInAnyOrder('B','K','M','P'));
+        assertThat(mapOfFruits.keySet(), containsInAnyOrder('B', 'K', 'M', 'P'));
         assertThat(mapOfFruits.get('B'), hasSize(1));
         assertThat(mapOfFruits.get('K'), hasSize(1));
         assertThat(mapOfFruits.get('M'), hasSize(1));
         assertThat(mapOfFruits.get('P'), hasSize(2));
     }
 
+    @Test
+    @DisplayName("Task: Put all fruits into one basket")
+        // <editor-fold defaultstate="collapsed" desc="Click here to see the answer">
+        /*
+             fruitBaskets.stream()
+                .flatMap(Collection::stream).collect(Collectors.toList());
+         */
+        //</editor-fold>
+    void task4() {
+        final List<List<Fruit>> fruitBaskets = List.of(
+                List.of(FRUITS.get(0), FRUITS.get(1)),
+                List.of(FRUITS.get(3), FRUITS.get(4))
+        );
+
+        final List<Fruit> basketWithAllFruits = Collections.emptyList(); // fruitBaskets.stream()
+
+        assertThat(basketWithAllFruits, containsInAnyOrder(FRUITS.get(0), FRUITS.get(1), FRUITS.get(3), FRUITS.get(4)));
+        assertThat(basketWithAllFruits, not(contains(FRUITS.get(2))));
+    }
 }
