@@ -36,14 +36,14 @@ class BasicsTest {
 
     private static final Set<Fruit> FRUITS = Set.of(PAPAYA, BANANA, KIWI, MANGO, PEACH);
 
-    @Test
-    @DisplayName("Task: Find 2 fruits with biggest amount of calories")
     // <editor-fold defaultstate="collapsed" desc="Click here to see the answer">
     /*
       .sorted(Comparator.comparing(Fruit::getCalories).reversed())
       .limit(2)
      */
-        //</editor-fold>
+    //</editor-fold>
+    @Test
+    @DisplayName("Task: Find 2 fruits with biggest amount of calories")
     void task1() {
         List<Fruit> mostCaloricFruits = FRUITS.stream().collect(Collectors.toList()); // TODO:  FRUITS.stream()
 
@@ -52,21 +52,19 @@ class BasicsTest {
         assertThat(mostCaloricFruits.get(1).getName(), is(MANGO));
     }
 
-    @Test
-    @DisplayName("Task: Take half of each fruit and get the sum of calories")
     // <editor-fold defaultstate="collapsed" desc="Click here to see the answer">
     /*
       FRUITS.stream().mapToInt((Fruit fruit) -> fruit.getCalories() / 2).sum();
      */
-        //</editor-fold>
+    //</editor-fold>
+    @Test
+    @DisplayName("Task: Take half of each fruit and get the sum of calories")
     void task2() {
         final int sumOfCalories = 0; // TODO: FRUITS.stream()
 
         assertThat(sumOfCalories, is(206));
     }
 
-    @Test
-    @DisplayName("Task: Group fruits by first letter")
     // <editor-fold defaultstate="collapsed" desc="Click here to see the answer">
     /*
     .collect(Collectors.groupingBy(
@@ -74,7 +72,9 @@ class BasicsTest {
         Collectors.toSet()
     ));
      */
-        //</editor-fold>
+    //</editor-fold>
+    @Test
+    @DisplayName("Task: Group fruits by first letter")
     void task3() {
         final Map<Character, Set<Fruit>> mapOfFruits = Collections.emptyMap(); // TODO: FRUITS.stream()
 
@@ -85,14 +85,14 @@ class BasicsTest {
         assertThat(mapOfFruits.get('P'), hasSize(2));
     }
 
-    @Test
-    @DisplayName("Task: Put all fruits into one basket")
     // <editor-fold defaultstate="collapsed" desc="Click here to see the answer">
     /*
          fruitBaskets.stream()
             .flatMap(Collection::stream).collect(Collectors.toList());
      */
-        //</editor-fold>
+    //</editor-fold>
+    @Test
+    @DisplayName("Task: Put all fruits into one basket")
     void task4() {
         final List<List<Fruit>> fruitBaskets = List.of(
                 List.of(BANANA, PAPAYA),
@@ -105,13 +105,13 @@ class BasicsTest {
         assertThat(basketWithAllFruits, not(contains(KIWI)));
     }
 
-    @Test
-    @DisplayName("Task: Count amount of each fruit in the basket")
     // <editor-fold defaultstate="collapsed" desc="Click here to see the answer">
     /*
         basket.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
     */
     //</editor-fold>
+    @Test
+    @DisplayName("Task: Count amount of each fruit in the basket")
     void task5() {
         final List<Fruit> basket = List.of(MANGO, PAPAYA, MANGO, PEACH, KIWI, KIWI, KIWI);
 
