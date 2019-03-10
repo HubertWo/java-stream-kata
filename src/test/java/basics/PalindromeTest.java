@@ -3,6 +3,10 @@ package basics;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
@@ -16,7 +20,10 @@ class PalindromeTest {
      */
     // <editor-fold defaultstate="collapsed" desc="Click here to see the answer">
     /*
-        // Count occurrence of each character
+        if (word.length() == 0) {
+            return false;
+        }
+
         final Map<Integer, Long> countedCharacters = word
                 .chars()
                 .boxed()
@@ -39,6 +46,7 @@ class PalindromeTest {
     @Test
     @DisplayName("Is palindrome candidate")
     void palindromeCandidate() {
+        assertThat(isPalindromeCandidate(""), is(false));
         assertThat(isPalindromeCandidate("a"), is(true));
         assertThat(isPalindromeCandidate("ab"), is(false));
         assertThat(isPalindromeCandidate("aab"), is(true));
