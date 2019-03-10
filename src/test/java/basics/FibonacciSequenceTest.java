@@ -19,11 +19,12 @@ class FibonacciSequenceTest {
     /*
         return Stream
             .iterate(new long[]{1, 1}, (long[] results) -> new long[]{results[1], results[0] + results[1]})
-            .limit(sequenceNumber)
+            .limit(sequenceIndex)
             .reduce((a, b) -> b)
             .orElse(new long[]{0, 0})[0];
      */
     //</editor-fold>
+
     /**
      * Calculates {@param sequenceIndex} of Fibonacci sequence.
      *
