@@ -138,7 +138,7 @@ class BasicsTest {
     @Test
     @DisplayName("Task: Mix all fruits together and construct one, big, new Fruit")
     void task6() {
-        final Fruit bigJuicyFruit = null; //FRUITS.stream()
+        final Fruit bigJuicyFruit = null; // TODO: FRUITS.stream()
 
         assertThat(bigJuicyFruit, notNullValue());
         assertThat(bigJuicyFruit.getCalories(), is(415));
