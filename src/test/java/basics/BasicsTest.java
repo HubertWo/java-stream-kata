@@ -88,8 +88,19 @@ class BasicsTest {
 
     // <editor-fold defaultstate="collapsed" desc="Click here to see the answer">
     /*
+         Solution 1.
+
          fruitBaskets.stream()
-            .flatMap(Collection::stream).collect(Collectors.toList());
+            .flatMap(Collection::stream)
+            .collect(Collectors.toList());
+
+         Solution 2 - just to illustrate the concept of flatMap.
+
+         fruitBaskets.stream()
+                .map(basket -> basket.stream())
+                .reduce(Stream.empty(), Stream::concat)
+                .collect(Collectors.toList());
+
      */
     //</editor-fold>
     @Test
