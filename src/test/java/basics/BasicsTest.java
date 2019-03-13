@@ -18,6 +18,7 @@ import static org.hamcrest.Matchers.*;
  * <p>
  * - {@link Stream#sorted()}
  * - {@link Stream#limit(long)}
+ * - {@link Stream#reduce}
  * - {@link Stream#mapToInt(ToIntFunction)}
  * - {@link Stream#flatMap(Function)}
  * - {@link Collectors#groupingBy(Function)}
@@ -123,6 +124,25 @@ class BasicsTest {
         assertThat(countedFruit.get(PAPAYA), is(1l));
         assertThat(countedFruit.get(PEACH), is(1l));
         assertThat(countedFruit.get(KIWI), is(3l));
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="Click here to see the answer">
+    /*
+         FRUITS.stream()
+                .reduce(new Fruit("", 0), (mixedFruit, fruitToAdd) -> new Fruit(
+                        mixedFruit.getName() + fruitToAdd.getName(),
+                        mixedFruit.getCalories() + fruitToAdd.getCalories()
+                ));
+    */
+    //</editor-fold>
+    @Test
+    @DisplayName("Task: Mix all fruits together and construct one, big, new Fruit")
+    void task6() {
+        final Fruit bigJuicyFruit = null; //FRUITS.stream()
+
+        assertThat(bigJuicyFruit, notNullValue());
+        assertThat(bigJuicyFruit.getCalories(), is(415));
+        assertThat(bigJuicyFruit.getName(), not(isEmptyString()));
     }
 
 }
