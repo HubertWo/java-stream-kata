@@ -8,6 +8,8 @@ This repository contains different tasks related to Java Streams.
 ## Leave a star :)
 If you like the content do not forget to leave a star at the top right corner. Thank you!
 
+https://github.com/HubertWo/java-stream-kata
+
 ## Setup
 Minimal setup is required. Tools you will need:
  - Java 9+ 
