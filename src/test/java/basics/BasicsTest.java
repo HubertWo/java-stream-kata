@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.*;
 import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -16,7 +17,7 @@ import static org.hamcrest.Matchers.*;
 /**
  * By doing this tasks you will learn how to use:
  * <p>
- * - {@link Stream#sorted()}
+ * - {@link Stream#sorted}
  * - {@link Stream#limit(long)}
  * - {@link Stream#reduce}
  * - {@link Stream#mapToInt(ToIntFunction)}
@@ -25,6 +26,7 @@ import static org.hamcrest.Matchers.*;
  * - {@link Collectors#counting()}
  * - {@link Comparator#comparing(Function)}
  * - {@link Function#identity()}
+ * - {@link Stream#generate(Supplier)}
  */
 @SuppressWarnings("SimplifyStreamApiCallChains")
 class BasicsTest {
@@ -156,4 +158,34 @@ class BasicsTest {
         assertThat(bigJuicyFruit.getName(), not(isEmptyString()));
     }
 
+    // <editor-fold defaultstate="collapsed" desc="Click here to see the answer">
+    /*
+         final Stream<Fruit> infiniteStreamOfFruits = Stream
+                .generate(fruitSupplier);
+     */
+    //</editor-fold>
+    @Test
+    @DisplayName("Task: Generate list of 10 randomly picked fruits")
+    void task7() {
+
+        // Random fruit supplier
+        final Supplier<Fruit> randomFruitSupplier = new Supplier<>() {
+            final Random random = new Random();
+            final List<Fruit> fruits = new ArrayList<>(FRUITS);
+
+            @Override
+            public Fruit get() {
+                return fruits.get(random.nextInt(fruits.size()));
+            }
+        };
+
+        final Stream<Fruit> infiniteStreamOfFruits = Stream.empty(); // TODO: Stream.
+
+
+        List<Fruit> pickedFruits = infiniteStreamOfFruits
+                .limit(10)
+                .collect(Collectors.toList());
+
+        assertThat(pickedFruits, hasSize(10));
+    }
 }
