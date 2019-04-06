@@ -8,10 +8,11 @@ import static org.hamcrest.Matchers.closeTo;
 import static org.hamcrest.Matchers.is;
 
 /**
- * By doing this tasks you will learn how to use:
+ * This task you will show you how to use:
  * <p>
  * - {@link java.util.stream.Stream#iterate)}
  * - {@link java.util.stream.Stream#reduce)}
+ * </p>
  */
 class FibonacciSequenceTest {
 

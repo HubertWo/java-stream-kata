@@ -3,13 +3,22 @@ package com.github.hubertwo.kata.stream.basics;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
+/**
+ * This task you will show you how to use:
+ * <p>
+ * - {@link Collectors#groupingBy(Function)}}
+ * - {@link Function#identity()}
+ * - {@link Collectors#counting()}
+ * - {@link Stream#count()}
+ * </p>
+ */
 class PalindromeTest {
 
     /**

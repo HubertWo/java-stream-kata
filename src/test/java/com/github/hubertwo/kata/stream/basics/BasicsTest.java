@@ -27,6 +27,7 @@ import static org.hamcrest.Matchers.*;
  * - {@link Comparator#comparing(Function)}
  * - {@link Function#identity()}
  * - {@link Stream#generate(Supplier)}
+ * </p>
  */
 @SuppressWarnings("SimplifyStreamApiCallChains")
 class BasicsTest {
