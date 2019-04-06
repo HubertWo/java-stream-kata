@@ -1,4 +1,4 @@
-package basics;
+package com.github.hubertwo.kata.stream.basics;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
