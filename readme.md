@@ -5,7 +5,7 @@
 
 This repository contains different tasks related to Java Streams. 
 
-## Leave a star :)
+## Leave a :star: :)
 If you like the content do not forget to leave a star at the top right corner. Thank you!
 
 https://github.com/HubertWo/java-stream-kata
