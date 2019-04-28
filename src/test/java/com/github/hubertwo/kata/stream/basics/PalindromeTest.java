@@ -18,6 +18,8 @@ import static org.hamcrest.Matchers.is;
  * - {@link Collectors#counting()}
  * - {@link Stream#count()}
  * </p>
+ *
+ * @author https://github.com/HubertWo
  */
 class PalindromeTest {
 

@@ -4,6 +4,8 @@ import java.util.Objects;
 
 /**
  * Fruit representation.
+ *
+ * @author https://github.com/HubertWo
  */
 public final class Fruit {
     private final String name;

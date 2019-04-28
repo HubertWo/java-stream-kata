@@ -13,6 +13,8 @@ import static org.hamcrest.Matchers.is;
  * - {@link java.util.stream.Stream#iterate)}
  * - {@link java.util.stream.Stream#reduce)}
  * </p>
+ *
+ * @author https://github.com/HubertWo
  */
 class FibonacciSequenceTest {
 

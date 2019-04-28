@@ -29,6 +29,8 @@ import static org.hamcrest.Matchers.*;
  * - {@link Function#identity()}
  * - {@link Stream#generate(Supplier)}
  * </p>
+ *
+ * @author https://github.com/HubertWo
  */
 @SuppressWarnings("SimplifyStreamApiCallChains")
 class BasicsTest {
