@@ -11,6 +11,7 @@ import java.util.function.ToIntFunction;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static java.util.stream.Collectors.toList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
@@ -49,7 +50,7 @@ class BasicsTest {
     @Test
     @DisplayName("Task: Find 2 fruits with biggest amount of calories")
     void task1() {
-        List<Fruit> mostCaloricFruits = FRUITS.stream().collect(Collectors.toList()); // TODO:  FRUITS.stream()
+        List<Fruit> mostCaloricFruits = FRUITS.stream().collect(toList()); // TODO:  FRUITS.stream()
 
         assertThat(mostCaloricFruits.size(), is(2));
         assertThat(mostCaloricFruits.get(0).getName(), is(PAPAYA));
@@ -189,4 +190,29 @@ class BasicsTest {
 
         assertThat(pickedFruits, hasSize(10));
     }
+
+    // <editor-fold defaultstate="collapsed" desc="Click here to see the answer">
+    /*
+            IntStream
+                .range(0, fruitList.size())
+                .filter(i -> i % 2 == 1)
+                .mapToObj(fruitList::get)
+                .collect(toList());
+     */
+    //</editor-fold>
+    @Test
+    @DisplayName("Task: Collect only second and forth (with odd index) fruit from fruitList.")
+    void task8() {
+        // Do you why list have to be sorted?
+        final List<Fruit> fruitList = new ArrayList<>(FRUITS).stream()
+                .sorted(Comparator.comparing(Fruit::getName))
+                .collect(toList());
+
+        List<Fruit> filteredFruits = fruitList; // TODO: change to stream.
+
+        assertThat(filteredFruits, hasSize(2));
+        assertThat(filteredFruits.get(0), is(PAPAYA));
+        assertThat(filteredFruits.get(1), is(BANANA));
+    }
+
 }
