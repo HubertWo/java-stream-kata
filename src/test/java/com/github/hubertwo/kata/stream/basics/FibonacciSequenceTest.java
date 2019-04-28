@@ -16,6 +16,7 @@ import static org.hamcrest.Matchers.is;
  *
  * @author https://github.com/HubertWo
  */
+@DisplayName("Fibonacci Sequence")
 class FibonacciSequenceTest {
 
     // <editor-fold defaultstate="collapsed" desc="Click here to see the answer">

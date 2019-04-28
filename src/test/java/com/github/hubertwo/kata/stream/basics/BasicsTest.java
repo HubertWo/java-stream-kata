@@ -33,6 +33,7 @@ import static org.hamcrest.Matchers.*;
  * @author https://github.com/HubertWo
  */
 @SuppressWarnings("SimplifyStreamApiCallChains")
+@DisplayName("Stream basics")
 class BasicsTest {
 
     private static final Fruit BANANA = new Fruit("Banana", 105);
@@ -203,7 +204,7 @@ class BasicsTest {
      */
     //</editor-fold>
     @Test
-    @DisplayName("Task: Collect only second and forth (with odd index) fruit from fruitList.")
+    @DisplayName("Task: Collect only second and forth (with odd index) fruit from fruitList")
     void task8() {
         // Do you why list have to be sorted?
         final List<Fruit> fruitList = new ArrayList<>(FRUITS).stream()

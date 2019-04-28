@@ -21,6 +21,7 @@ import static org.hamcrest.Matchers.is;
  *
  * @author https://github.com/HubertWo
  */
+@DisplayName("Palindrome")
 class PalindromeTest {
 
     /**
