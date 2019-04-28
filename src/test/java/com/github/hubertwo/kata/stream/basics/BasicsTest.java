@@ -206,7 +206,7 @@ class BasicsTest {
     @Test
     @DisplayName("Task: Collect only second and forth (with odd index) fruit from fruitList")
     void task8() {
-        // Do you why list have to be sorted?
+        // Do you know why list have to be sorted?
         final List<Fruit> fruitList = new ArrayList<>(FRUITS).stream()
                 .sorted(Comparator.comparing(Fruit::getName))
                 .collect(toList());
