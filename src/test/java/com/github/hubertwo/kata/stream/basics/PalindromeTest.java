@@ -3,6 +3,7 @@ package com.github.hubertwo.kata.stream.basics;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -50,8 +51,22 @@ class PalindromeTest {
     */
     //</editor-fold>
     private static boolean isPalindromeCandidate(final String word) {
-        // TODO: implement using {@link Stream}
-        throw new IllegalStateException("Not implemented yet");
+        if (word.length() == 0) {
+            return false;
+        }
+
+        final Map<Integer, Long> countedCharacters = word
+                .chars()
+                .boxed()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+        // Count number of characters which occurred odd number of times
+        final long oddCharactersCount = countedCharacters.values().stream()
+                .filter(count -> count % 2 != 0)
+                .count();
+
+        // Only one character with odd number of occurrences is allowed
+        return oddCharactersCount <= 1;
     }
 
     @Test
