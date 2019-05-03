@@ -20,11 +20,11 @@ Minimal setup is required. Tools you will need:
 Each exercise is an jUnit test. 
 You can run test from both Maven or any modern IDE. 
 
-## Where are solutions?
+## Where are answers?
 Each task has solution in "Click here to see the answer" block.
 <img src="https://github.com/HubertWo/java-stream-kata/blob/master/img/solution.png?raw=true" width="500px">
 
-#### Branch will all answers
+#### Branch with all answers
 Branch ```answers``` has all answers in place and all tests are green.
 
 ### Maven
