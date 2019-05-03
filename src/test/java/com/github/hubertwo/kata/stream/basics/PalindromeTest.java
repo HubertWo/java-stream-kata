@@ -57,7 +57,7 @@ class PalindromeTest {
     @Test
     @DisplayName("Is palindrome candidate")
     void palindromeCandidate() {
-        assertThat(isPalindromeCandidate("")).isTrue();
+        assertThat(isPalindromeCandidate("")).isFalse();
         assertThat(isPalindromeCandidate("a")).isTrue();
         assertThat(isPalindromeCandidate("ab")).isFalse();
         assertThat(isPalindromeCandidate("aab")).isTrue();
