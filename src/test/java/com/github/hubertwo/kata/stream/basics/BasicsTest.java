@@ -213,7 +213,7 @@ class BasicsTest {
         List<Fruit> filteredFruits = fruitList; // TODO: change to stream.
 
         assertThat(filteredFruits).hasSize(2);
-        assertThat(filteredFruits).containsExactly(PAPAYA, BANANA);
+        assertThat(filteredFruits).containsExactly(KIWI, PAPAYA);
     }
 
 }
