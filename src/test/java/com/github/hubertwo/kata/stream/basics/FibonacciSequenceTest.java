@@ -1,11 +1,11 @@
 package com.github.hubertwo.kata.stream.basics;
 
+import org.assertj.core.data.Percentage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.closeTo;
-import static org.hamcrest.Matchers.is;
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 /**
  * This task you will show you how to use:
@@ -41,15 +41,14 @@ class FibonacciSequenceTest {
     @Test
     @DisplayName("Task: Calculate Fibonacci Sequence")
     void task() {
-        assertThat(fibonacciSequence(0), is(0L));
-        assertThat(fibonacciSequence(1), is(1L));
-        assertThat(fibonacciSequence(2), is(1L));
-        assertThat(fibonacciSequence(3), is(2L));
-        assertThat(fibonacciSequence(10), is(55L));
-        assertThat(
-                (double) fibonacciSequence(20) / fibonacciSequence(19),
-                closeTo(1.61d, 0.2d)
-        );
+        assertThat(fibonacciSequence(0)).isEqualTo(0);
+        assertThat(fibonacciSequence(1)).isEqualTo(1);
+        assertThat(fibonacciSequence(2)).isEqualTo(1);
+        assertThat(fibonacciSequence(3)).isEqualTo(2);
+        assertThat(fibonacciSequence(10)).isEqualTo(55);
+
+        final double goldenRatio = (double) fibonacciSequence(20) / fibonacciSequence(19);
+        assertThat(goldenRatio).isCloseTo(1.61d, Percentage.withPercentage(0.2));
     }
 
 
