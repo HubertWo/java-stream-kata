@@ -47,6 +47,7 @@ class BasicsTest {
     /*
       .sorted(Comparator.comparing(Fruit::getCalories).reversed())
       .limit(2)
+      .collect(toList());
      */
     //</editor-fold>
     @Test
@@ -72,9 +73,10 @@ class BasicsTest {
 
     // <editor-fold defaultstate="collapsed" desc="Click here to see the answer">
     /*
-    .collect(Collectors.groupingBy(
-        (Fruit fruit) -> fruit.getName().charAt(0),
-        Collectors.toSet()
+        FRUITS.stream()
+            .collect(Collectors
+                .groupingBy((Fruit fruit) -> fruit.getName().charAt(0), Collectors.toSet()
+            )
     ));
      */
     //</editor-fold>
@@ -133,7 +135,6 @@ class BasicsTest {
 
         final Map<Fruit, Long> countedFruit = Collections.emptyMap(); //  TODO: basket.stream()
 
-        assertThat(countedFruit).hasSize(4);
         assertThat(countedFruit.keySet()).contains(MANGO, PAPAYA, PEACH, KIWI);
 
         assertThat(countedFruit.get(MANGO)).isEqualTo(2);
@@ -164,7 +165,7 @@ class BasicsTest {
     // <editor-fold defaultstate="collapsed" desc="Click here to see the answer">
     /*
          final Stream<Fruit> infiniteStreamOfFruits = Stream
-                .generate(fruitSupplier);
+                .generate(randomFruitSupplier);
      */
     //</editor-fold>
     @Test
