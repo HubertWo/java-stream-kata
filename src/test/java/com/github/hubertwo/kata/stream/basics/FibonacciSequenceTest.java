@@ -48,7 +48,7 @@ class FibonacciSequenceTest {
         assertThat(fibonacciSequence(10)).isEqualTo(55);
 
         final double goldenRatio = (double) fibonacciSequence(20) / fibonacciSequence(19);
-        assertThat(goldenRatio).isCloseTo(1.61d, Percentage.withPercentage(0.2));
+        assertThat(goldenRatio).isCloseTo(1.61d, Percentage.withPercentage(2));
     }
 
 
