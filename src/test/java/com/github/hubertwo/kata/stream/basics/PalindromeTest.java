@@ -7,8 +7,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * This task you will show you how to use:
@@ -58,11 +57,11 @@ class PalindromeTest {
     @Test
     @DisplayName("Is palindrome candidate")
     void palindromeCandidate() {
-        assertThat(isPalindromeCandidate(""), is(false));
-        assertThat(isPalindromeCandidate("a"), is(true));
-        assertThat(isPalindromeCandidate("ab"), is(false));
-        assertThat(isPalindromeCandidate("aab"), is(true));
-        assertThat(isPalindromeCandidate("aabb"), is(true));
-        assertThat(isPalindromeCandidate("aabbc"), is(true));
+        assertThat(isPalindromeCandidate("")).isFalse();
+        assertThat(isPalindromeCandidate("a")).isTrue();
+        assertThat(isPalindromeCandidate("ab")).isFalse();
+        assertThat(isPalindromeCandidate("aab")).isTrue();
+        assertThat(isPalindromeCandidate("aabb")).isTrue();
+        assertThat(isPalindromeCandidate("aabbc")).isTrue();
     }
 }

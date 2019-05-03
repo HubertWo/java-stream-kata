@@ -12,8 +12,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * By doing this tasks you will learn how to use:
@@ -48,6 +47,7 @@ class BasicsTest {
     /*
       .sorted(Comparator.comparing(Fruit::getCalories).reversed())
       .limit(2)
+      .collect(toList());
      */
     //</editor-fold>
     @Test
@@ -55,9 +55,7 @@ class BasicsTest {
     void task1() {
         List<Fruit> mostCaloricFruits = FRUITS.stream().collect(toList()); // TODO:  FRUITS.stream()
 
-        assertThat(mostCaloricFruits.size(), is(2));
-        assertThat(mostCaloricFruits.get(0).getName(), is(PAPAYA));
-        assertThat(mostCaloricFruits.get(1).getName(), is(MANGO));
+        assertThat(mostCaloricFruits).containsExactly(PAPAYA, MANGO);
     }
 
     // <editor-fold defaultstate="collapsed" desc="Click here to see the answer">
@@ -70,14 +68,15 @@ class BasicsTest {
     void task2() {
         final int sumOfCalories = 0; // TODO: FRUITS.stream()
 
-        assertThat(sumOfCalories, is(206));
+        assertThat(sumOfCalories).isEqualTo(206);
     }
 
     // <editor-fold defaultstate="collapsed" desc="Click here to see the answer">
     /*
-    .collect(Collectors.groupingBy(
-        (Fruit fruit) -> fruit.getName().charAt(0),
-        Collectors.toSet()
+        FRUITS.stream()
+            .collect(Collectors
+                .groupingBy((Fruit fruit) -> fruit.getName().charAt(0), Collectors.toSet()
+            )
     ));
      */
     //</editor-fold>
@@ -86,11 +85,11 @@ class BasicsTest {
     void task3() {
         final Map<Character, Set<Fruit>> mapOfFruits = Collections.emptyMap(); // TODO: FRUITS.stream()
 
-        assertThat(mapOfFruits.keySet(), containsInAnyOrder('B', 'K', 'M', 'P'));
-        assertThat(mapOfFruits.get('B'), hasSize(1));
-        assertThat(mapOfFruits.get('K'), hasSize(1));
-        assertThat(mapOfFruits.get('M'), hasSize(1));
-        assertThat(mapOfFruits.get('P'), hasSize(2));
+        assertThat(mapOfFruits.keySet()).contains('B', 'K', 'M', 'P');
+        assertThat(mapOfFruits.get('B')).hasSize(1);
+        assertThat(mapOfFruits.get('K')).hasSize(1);
+        assertThat(mapOfFruits.get('M')).hasSize(1);
+        assertThat(mapOfFruits.get('P')).hasSize(2);
     }
 
     // <editor-fold defaultstate="collapsed" desc="Click here to see the answer">
@@ -120,8 +119,8 @@ class BasicsTest {
 
         final List<Fruit> basketWithAllFruits = Collections.emptyList(); // TODO: fruitBaskets.stream()
 
-        assertThat(basketWithAllFruits, containsInAnyOrder(BANANA, PAPAYA, MANGO, PEACH));
-        assertThat(basketWithAllFruits, not(contains(KIWI)));
+        assertThat(basketWithAllFruits).contains(BANANA, PAPAYA, MANGO, PEACH);
+        assertThat(basketWithAllFruits).doesNotContain(KIWI);
     }
 
     // <editor-fold defaultstate="collapsed" desc="Click here to see the answer">
@@ -136,12 +135,12 @@ class BasicsTest {
 
         final Map<Fruit, Long> countedFruit = Collections.emptyMap(); //  TODO: basket.stream()
 
-        assertThat(countedFruit.size(), is(4));
-        assertThat(countedFruit.keySet(), containsInAnyOrder(MANGO, PAPAYA, PEACH, KIWI));
-        assertThat(countedFruit.get(MANGO), is(2l));
-        assertThat(countedFruit.get(PAPAYA), is(1l));
-        assertThat(countedFruit.get(PEACH), is(1l));
-        assertThat(countedFruit.get(KIWI), is(3l));
+        assertThat(countedFruit.keySet()).contains(MANGO, PAPAYA, PEACH, KIWI);
+
+        assertThat(countedFruit.get(MANGO)).isEqualTo(2);
+        assertThat(countedFruit.get(PAPAYA)).isEqualTo(1);
+        assertThat(countedFruit.get(PEACH)).isEqualTo(1);
+        assertThat(countedFruit.get(KIWI)).isEqualTo(3);
     }
 
     // <editor-fold defaultstate="collapsed" desc="Click here to see the answer">
@@ -158,15 +157,15 @@ class BasicsTest {
     void task6() {
         final Fruit bigJuicyFruit = null; // TODO: FRUITS.stream()
 
-        assertThat(bigJuicyFruit, notNullValue());
-        assertThat(bigJuicyFruit.getCalories(), is(415));
-        assertThat(bigJuicyFruit.getName(), not(isEmptyString()));
+        assertThat(bigJuicyFruit).isNotNull();
+        assertThat(bigJuicyFruit.getCalories()).isEqualTo(415);
+        assertThat(bigJuicyFruit.getName()).isNotEmpty();
     }
 
     // <editor-fold defaultstate="collapsed" desc="Click here to see the answer">
     /*
          final Stream<Fruit> infiniteStreamOfFruits = Stream
-                .generate(fruitSupplier);
+                .generate(randomFruitSupplier);
      */
     //</editor-fold>
     @Test
@@ -191,7 +190,7 @@ class BasicsTest {
                 .limit(10)
                 .collect(Collectors.toList());
 
-        assertThat(pickedFruits, hasSize(10));
+        assertThat(pickedFruits).hasSize(10);
     }
 
     // <editor-fold defaultstate="collapsed" desc="Click here to see the answer">
@@ -213,9 +212,8 @@ class BasicsTest {
 
         List<Fruit> filteredFruits = fruitList; // TODO: change to stream.
 
-        assertThat(filteredFruits, hasSize(2));
-        assertThat(filteredFruits.get(0), is(PAPAYA));
-        assertThat(filteredFruits.get(1), is(BANANA));
+        assertThat(filteredFruits).hasSize(2);
+        assertThat(filteredFruits).containsExactly(KIWI, PAPAYA);
     }
 
 }
