@@ -12,9 +12,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
-import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toUnmodifiableList;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -70,7 +68,7 @@ class BasicsJava11Test {
      */
     //</editor-fold>
     @Test
-    @DisplayName("Task: Load fruits list from file")
+    @DisplayName("Task: Load fruit list from file")
     void task2() throws IOException, URISyntaxException {
         // Loads the String from resources file
         URI resource = ClassLoader.getSystemResource("java11/fruitList.txt").toURI();

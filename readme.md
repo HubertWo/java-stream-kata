@@ -12,7 +12,7 @@ https://github.com/HubertWo/java-stream-kata
 
 ## Setup
 Minimal setup is required. Tools you will need:
- - Java 9+ 
+ - Java 11+ 
  - Maven
  - IDE (In my case IntelliJ IDEA)
  
@@ -37,6 +37,6 @@ mvn surefire:test -Dtest=BasicsTest#task1
 After importing project press "Play" near the test you want to run.
 
 ## More
-- Java Stream API: https://docs.oracle.com/javase/9/docs/api/java/util/stream/package-summary.html
+- Java Stream API: https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/stream/package-summary.html
 - How to run single test using Maven : https://maven.apache.org/surefire/maven-surefire-plugin/examples/single-test.html
 - How to run single test using IntelliJ IDEA: https://www.jetbrains.com/help/idea/performing-tests.html 
