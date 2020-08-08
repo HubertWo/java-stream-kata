@@ -1,0 +1,5 @@
+Mango,107
+Kiwi,46
+Papaya,109
+Peach,48
+Banana,105
